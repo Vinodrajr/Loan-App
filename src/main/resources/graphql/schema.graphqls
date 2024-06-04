@@ -1,0 +1,37 @@
+type LoanEnquiry{
+
+	loanEnquiryId:ID!,
+	accountnumber:String,
+	branchId:String,
+	bankId:String,
+	loanAmount:Int,
+	tenure:Int,
+	purpose:String,
+	loanType:LoanType
+}
+
+input LoanEnquiryInput {
+	accountnumber:String,
+	branchId:String,
+	bankId:String,
+	loanAmount:Int,
+	tenure:Int,
+	purpose:String,
+	loanType:LoanType
+}
+
+enum LoanType {
+	HOME_LOAN
+	CAR_LOAN
+	EDUCATION_LOAN 
+	PERSONAL_LOAN
+
+}
+
+type Mutation{
+	createLoanEnquiry(inputLoanEnquiry:LoanEnquiryInput):LoanEnquiry
+}
+
+type Query {
+	getLoanEnquiryById(id:Int):LoanEnquiry
+}
