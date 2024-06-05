@@ -33,5 +33,5 @@ type Mutation{
 }
 
 type Query {
-	getLoanEnquiryById(id:Int):LoanEnquiry
+	getLoanEnquiryByAccountNumber(accountnumber : String) : LoanEnquiry
 }

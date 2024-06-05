@@ -7,6 +7,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ty.loanApp.dao.LoanEnquiryDao;
 import com.ty.loanApp.dto.LoanEnquiryInput;
 import com.ty.loanApp.entity.LoanEnquiry;
+import com.ty.loanApp.enums.LoanStatus;
 import com.ty.loanApp.service.LoanEnquiryService;
 
 @Service
@@ -18,12 +19,14 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 	@Override
 	public LoanEnquiry saveLoanEnquiry(LoanEnquiryInput inputLoanEnquiry) {
 
-		ObjectMapper mapper = new ObjectMapper();
-		LoanEnquiry loanEnquiry = mapper.convertValue(inputLoanEnquiry, LoanEnquiry.class);
-		String accountNumber =loanEnquiry.getAccountnumber();
-		
-		
+		LoanEnquiry loanEnquiry = new ObjectMapper().convertValue(inputLoanEnquiry, LoanEnquiry.class);
+		loanEnquiry.setLoanStatus(LoanStatus.IN_PROGRESS);;
 		return loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
+	}
+
+	@Override
+	public LoanEnquiry getLoanEnquiryByAccountNumber(String accountnumber) {
+		return loanEnquiryDao.getLoanEnquiryByAccountNumber(accountnumber);
 	}
 
 }

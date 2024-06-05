@@ -5,5 +5,7 @@ import com.ty.loanApp.entity.LoanEnquiry;
 public interface LoanEnquiryDao {
 
 	LoanEnquiry saveLoanEnquiry(LoanEnquiry loanEnquiry);
+	
+	LoanEnquiry getLoanEnquiryByAccountNumber(String accountnumber);
 
 }

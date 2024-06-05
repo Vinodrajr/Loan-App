@@ -7,5 +7,7 @@ public interface LoanEnquiryService {
 	
 	
 	public LoanEnquiry saveLoanEnquiry(LoanEnquiryInput inputLoanEnquiry) ;
+	
+	public LoanEnquiry getLoanEnquiryByAccountNumber(String accountnumber);
 
 }

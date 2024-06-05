@@ -21,8 +21,8 @@ public class LoanEnquiryController {
 		return loanEnquiryService.saveLoanEnquiry(inputLoanEnquiry);
 	}
 
-	@QueryMapping(name = "getLoanEnquiryById")
-	public void getLoanEnquiryById(int id) {
-		System.out.println("Hi");
+	@QueryMapping
+	public LoanEnquiry getLoanEnquiryByAccountNumber(@Argument String accountnumber) {
+		return loanEnquiryService.getLoanEnquiryByAccountNumber(accountnumber);
 	}
 }
