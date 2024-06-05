@@ -30,8 +30,17 @@ enum LoanType {
 
 type Mutation{
 	createLoanEnquiry(inputLoanEnquiry:LoanEnquiryInput):LoanEnquiry
+	deleteLoanEnquiryByEnquiryId(loanEnquiryId : Int) : String
+	deleteLoanEnquiryByBankId(bankId : String) : String
+	deleteLoanEnquiryByBranchId(branchId : String ) : String
 }
 
 type Query {
 	getLoanEnquiryByAccountNumber(accountnumber : String) : LoanEnquiry
+	getAllLoanEnquiryByBranchId(branchId : String) : [LoanEnquiry]
+	getAllLoanEnquiryByBankId(bankId : String) : [LoanEnquiry]
+	checkLoanEnquiryByBankId(bankId : String) : Boolean
+	checkLoanEnquiryByBranchId(branchId : String) : Boolean
 }
+
+

@@ -1,4 +1,4 @@
-package com.ty.loanApp.service.exception;
+package com.ty.loanApp.exception;
 
 public class AccountNumberNotFound extends RuntimeException {
 
