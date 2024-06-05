@@ -1,8 +1,11 @@
 package com.ty.loanApp.entity;
 
+import com.ty.loanApp.enums.LoanStatus;
 import com.ty.loanApp.enums.LoanType;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -23,6 +26,9 @@ public class LoanEnquiry {
 	private double loanAmount;
 	private long tenure;
 	private String purpose;
+	@Enumerated(EnumType.STRING)
 	private LoanType loanType;
+	@Enumerated(EnumType.STRING)
+	private LoanStatus loanStatus ;
 
 }
