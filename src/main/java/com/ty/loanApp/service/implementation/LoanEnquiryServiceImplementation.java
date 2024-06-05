@@ -8,7 +8,9 @@ import com.ty.loanApp.dao.LoanEnquiryDao;
 import com.ty.loanApp.dto.LoanEnquiryInput;
 import com.ty.loanApp.entity.LoanEnquiry;
 import com.ty.loanApp.enums.LoanStatus;
+import com.ty.loanApp.proxy.AccountControllerProxy;
 import com.ty.loanApp.service.LoanEnquiryService;
+import com.ty.loanApp.service.exception.AccountNumberNotFound;
 
 @Service
 public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
@@ -16,12 +18,19 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 	@Autowired
 	private LoanEnquiryDao loanEnquiryDao;
 
+	@Autowired
+	private AccountControllerProxy proxy;
+
 	@Override
 	public LoanEnquiry saveLoanEnquiry(LoanEnquiryInput inputLoanEnquiry) {
 
-		LoanEnquiry loanEnquiry = new ObjectMapper().convertValue(inputLoanEnquiry, LoanEnquiry.class);
-		loanEnquiry.setLoanStatus(LoanStatus.IN_PROGRESS);;
-		return loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
+
+		ObjectMapper mapper = new ObjectMapper();
+		LoanEnquiry loanEnquiry = mapper.convertValue(inputLoanEnquiry, LoanEnquiry.class);
+		loanEnquiry.setLoanStatus(LoanStatus.IN_PROGRESS);
+		if (proxy.checkAccountNumberExist(loanEnquiry.getAccountnumber()).getBody().getData())
+			return loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
+		throw new AccountNumberNotFound("Invalid Account Number");
 	}
 
 	@Override
