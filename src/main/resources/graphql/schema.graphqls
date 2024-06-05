@@ -33,7 +33,7 @@ enum LoanType {
 }
 
 type Mutation{
-	createLoanEnquiry(inputLoanEnquiry:LoanEnquiryInput):LoanEnquiry
+	createLoanEnquiry(inputLoanEnquiry:EnquiryDto):LoanEnquiry
 	deleteLoanEnquiryByEnquiryId(loanEnquiryId : Int) : String
 	deleteLoanEnquiryByBankId(bankId : String) : String
 	deleteLoanEnquiryByBranchId(branchId : String ) : String
@@ -68,7 +68,7 @@ enum LoanStatus {
 input OccupationDto {
 	accountnumber : String
 	profession : Profession
-	monthlyIncome : double
+	monthlyIncome : Float
 
 }
 

@@ -67,4 +67,6 @@ public class LoanEnquiryController {
 	{
 		return loanEnquiryService.checkLoanEnquiryByBranchId(branchId);
 	}
+	
+	
 }
