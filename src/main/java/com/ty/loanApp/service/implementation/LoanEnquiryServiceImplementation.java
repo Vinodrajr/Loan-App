@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ty.loanApp.dao.LoanEnquiryDao;
-import com.ty.loanApp.dto.LoanEnquiryInput;
+import com.ty.loanApp.dto.EnquiryDto;
 import com.ty.loanApp.entity.LoanEnquiry;
 import com.ty.loanApp.enums.LoanStatus;
 import com.ty.loanApp.exception.AccountNumberNotFound;
@@ -24,7 +24,7 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 	private AccountControllerProxy proxy;
 
 	@Override
-	public LoanEnquiry saveLoanEnquiry(LoanEnquiryInput inputLoanEnquiry) {
+	public LoanEnquiry saveLoanEnquiry(EnquiryDto inputLoanEnquiry) {
 		ObjectMapper mapper = new ObjectMapper();
 		LoanEnquiry loanEnquiry = mapper.convertValue(inputLoanEnquiry, LoanEnquiry.class);
 		loanEnquiry.setLoanStatus(LoanStatus.IN_PROGRESS);

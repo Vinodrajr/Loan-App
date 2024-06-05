@@ -2,6 +2,7 @@ package com.ty.loanApp.entity;
 
 import com.ty.loanApp.enums.LoanStatus;
 import com.ty.loanApp.enums.LoanType;
+import com.ty.loanApp.enums.Profession;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -30,5 +31,8 @@ public class LoanEnquiry {
 	private LoanType loanType;
 	@Enumerated(EnumType.STRING)
 	private LoanStatus loanStatus ;
+	@Enumerated(EnumType.STRING)
+	private Profession profession ;
+	private double monthlyIncome ;
 
 }

@@ -8,9 +8,12 @@ type LoanEnquiry{
 	tenure:Int,
 	purpose:String,
 	loanType:LoanType
+	loanStatus : LoanStatus,
+	profession : Profession, 
+	monthlyIncome : Float
 }
 
-input LoanEnquiryInput {
+input EnquiryDto {
 	accountnumber:String,
 	branchId:String,
 	bankId:String,
@@ -18,6 +21,7 @@ input LoanEnquiryInput {
 	tenure:Int,
 	purpose:String,
 	loanType:LoanType
+	
 }
 
 enum LoanType {
@@ -42,5 +46,29 @@ type Query {
 	checkLoanEnquiryByBankId(bankId : String) : Boolean
 	checkLoanEnquiryByBranchId(branchId : String) : Boolean
 }
+enum Profession {
+	
+	SELF_EMPLOYEED
+	GOVERNMENT_EMPLOYEE
+	PRIVATE_SECTOR_EMPLOYEE
+	PUBLIC_SECTOR_EMPLOYEE 
 
+}
+
+enum LoanStatus {
+	
+	ACTIVE 
+	INACTIVE 
+	HOLD
+	REJECTED
+	IN_PROGRESS
+
+}
+
+input OccupationDto {
+	accountnumber : String
+	profession : Profession
+	monthlyIncome : double
+
+}
 

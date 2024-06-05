@@ -9,7 +9,7 @@ import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
 
-import com.ty.loanApp.dto.LoanEnquiryInput;
+import com.ty.loanApp.dto.EnquiryDto;
 import com.ty.loanApp.entity.LoanEnquiry;
 import com.ty.loanApp.service.LoanEnquiryService;
 
@@ -20,7 +20,7 @@ public class LoanEnquiryController {
 	private LoanEnquiryService loanEnquiryService;
 
 	@MutationMapping(name = "createLoanEnquiry")
-	public LoanEnquiry createLoanEnquiry(@Argument LoanEnquiryInput inputLoanEnquiry) {
+	public LoanEnquiry createLoanEnquiry(@Argument EnquiryDto inputLoanEnquiry) {
 		return loanEnquiryService.saveLoanEnquiry(inputLoanEnquiry);
 	}
 

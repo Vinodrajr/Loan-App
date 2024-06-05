@@ -2,13 +2,13 @@ package com.ty.loanApp.service;
 
 import java.util.List;
 
-import com.ty.loanApp.dto.LoanEnquiryInput;
+import com.ty.loanApp.dto.EnquiryDto;
 import com.ty.loanApp.entity.LoanEnquiry;
 
 public interface LoanEnquiryService {
 	
 	
-	public LoanEnquiry saveLoanEnquiry(LoanEnquiryInput inputLoanEnquiry) ;
+	public LoanEnquiry saveLoanEnquiry(EnquiryDto inputLoanEnquiry) ;
 	
 	public LoanEnquiry getLoanEnquiryByAccountNumber(String accountnumber);
 	

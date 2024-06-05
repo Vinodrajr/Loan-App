@@ -1,11 +1,12 @@
 package com.ty.loanApp.dto;
 
 import com.ty.loanApp.enums.LoanType;
+import com.ty.loanApp.enums.Profession;
 
 import lombok.Data;
 
 @Data
-public class LoanEnquiryInput {
+public class EnquiryDto {
 
 	private String accountnumber;
 	private String branchId;
@@ -14,5 +15,6 @@ public class LoanEnquiryInput {
 	private long tenure;
 	private String purpose;
 	private LoanType loanType;
+
 
 }
