@@ -8,7 +8,7 @@ import com.ty.loanApp.entity.LoanEnquiryStepProcess;
 @Configuration
 public class LoanEnquiryProcessConfiguration {
 
-	@Bean
+	@Bean(value = "prototype")
 	public LoanEnquiryStepProcess getEnquiryStepProcess() {
 		return new LoanEnquiryStepProcess();
 	}
