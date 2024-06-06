@@ -1,7 +1,6 @@
 package com.ty.loanApp.dto;
 
 import com.ty.loanApp.enums.LoanType;
-import com.ty.loanApp.enums.Profession;
 
 import lombok.Data;
 

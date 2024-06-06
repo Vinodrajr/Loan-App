@@ -24,6 +24,13 @@ input EnquiryDto {
 	
 }
 
+input OccupationDto {
+	accountnumber : String
+	profession : Profession
+	monthlyIncome : Float
+
+}
+
 enum LoanType {
 	HOME_LOAN
 	CAR_LOAN
@@ -32,20 +39,7 @@ enum LoanType {
 
 }
 
-type Mutation{
-	createLoanEnquiry(inputLoanEnquiry:LoanEnquiryInput):LoanEnquiry
-	deleteLoanEnquiryByEnquiryId(loanEnquiryId : Int) : String
-	deleteLoanEnquiryByBankId(bankId : String) : String
-	deleteLoanEnquiryByBranchId(branchId : String ) : String
-}
 
-type Query {
-	getLoanEnquiryByAccountNumber(accountnumber : String) : LoanEnquiry
-	getAllLoanEnquiryByBranchId(branchId : String) : [LoanEnquiry]
-	getAllLoanEnquiryByBankId(bankId : String) : [LoanEnquiry]
-	checkLoanEnquiryByBankId(bankId : String) : Boolean
-	checkLoanEnquiryByBranchId(branchId : String) : Boolean
-}
 enum Profession {
 	
 	SELF_EMPLOYEED
@@ -65,10 +59,11 @@ enum LoanStatus {
 
 }
 
-input OccupationDto {
-	accountnumber : String
-	profession : Profession
-	monthlyIncome : double
-
+type Mutation{
+	createLoanEnquiry(inputLoanEnquiry:EnquiryDto):LoanEnquiry
+	
 }
 
+type Query {
+	getLoanEnquiryByAccountNumber(accountnumber : String) : LoanEnquiry
+}

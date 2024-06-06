@@ -1,0 +1,15 @@
+
+extend type Query{
+	
+	getAllLoanEnquiryByBranchId(branchId : String) : [LoanEnquiry]
+	getAllLoanEnquiryByBankId(bankId : String) : [LoanEnquiry]
+	checkLoanEnquiryByBankId(bankId : String) : Boolean
+	checkLoanEnquiryByBranchId(branchId : String) : Boolean
+}
+
+
+extend type Mutation{
+	deleteLoanEnquiryByEnquiryId(loanEnquiryId : Int) : String
+	deleteLoanEnquiryByBankId(bankId : String) : String
+	deleteLoanEnquiryByBranchId(branchId : String ) : String
+}
