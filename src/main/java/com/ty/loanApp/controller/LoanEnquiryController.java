@@ -19,8 +19,8 @@ public class LoanEnquiryController {
 	private LoanEnquiryService loanEnquiryService;
 
 	@MutationMapping(name = "createLoanEnquiry")
-	public LoanEnquiry createLoanEnquiry(@Argument EnquiryDto inputLoanEnquiry) {
-		return loanEnquiryService.saveLoanEnquiry(inputLoanEnquiry);
+	public LoanEnquiry LoanEnquiryStepOne(@Argument EnquiryDto inputLoanEnquiry) {
+		return loanEnquiryService.LoanEnquiryStepOne(inputLoanEnquiry);
 	}
 
 	@QueryMapping
