@@ -59,7 +59,7 @@ enum LoanStatus {
 }
 
 type LoanEnquiryStepProcess {
-	processId : Int 
+	processId : ID 
 	stepCount : Int
 	isCompleted : Boolean 
 	accountNumber : String
@@ -68,7 +68,7 @@ type LoanEnquiryStepProcess {
 
 type Mutation{
 	createLoanEnquiry(inputLoanEnquiry:EnquiryDto):LoanEnquiry
-	
+}
 
 
 type Query {
