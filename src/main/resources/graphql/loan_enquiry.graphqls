@@ -5,6 +5,7 @@ extend type Query{
 	getAllLoanEnquiryByBankId(bankId : String) : [LoanEnquiry]
 	checkLoanEnquiryByBankId(bankId : String) : Boolean
 	checkLoanEnquiryByBranchId(branchId : String) : Boolean
+	loanEnnquiryStepIsCompleted(accountNumber : String , stepCount : Int) : Boolean
 }
 
 
