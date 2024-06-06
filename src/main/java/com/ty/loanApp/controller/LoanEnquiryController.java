@@ -62,4 +62,6 @@ public class LoanEnquiryController {
 	public boolean checkLoanEnquiryByBranchId(@Argument String branchId) {
 		return loanEnquiryService.checkLoanEnquiryByBranchId(branchId);
 	}
+	
+	
 }

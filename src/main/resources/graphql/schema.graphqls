@@ -39,7 +39,6 @@ enum LoanType {
 
 }
 
-
 enum Profession {
 	
 	SELF_EMPLOYEED
@@ -59,10 +58,11 @@ enum LoanStatus {
 
 }
 
+
 type Mutation{
 	createLoanEnquiry(inputLoanEnquiry:EnquiryDto):LoanEnquiry
 	
-}
+
 
 type Query {
 	getLoanEnquiryByAccountNumber(accountnumber : String) : LoanEnquiry
