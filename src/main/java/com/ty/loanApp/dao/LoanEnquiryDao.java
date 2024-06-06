@@ -23,5 +23,6 @@ public interface LoanEnquiryDao {
 	public boolean checkLoanEnquiryByBankId(String bankId);
 	
 	public boolean checkLoanEnquiryByBranchId(String branchId);
-
+	
+	
 }

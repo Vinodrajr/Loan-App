@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.netflix.discovery.converters.Auto;
 import com.ty.loanApp.dao.LoanEnquiryDao;
 import com.ty.loanApp.dao.LoanEnquiryStepProcessDao;
 import com.ty.loanApp.dto.EnquiryDto;
@@ -88,5 +87,6 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 	public boolean checkLoanEnquiryByBranchId(String branchId) {
 		return loanEnquiryDao.checkLoanEnquiryByBranchId(branchId);
 	}
+
 
 }

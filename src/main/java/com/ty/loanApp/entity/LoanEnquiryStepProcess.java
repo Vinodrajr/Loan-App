@@ -1,11 +1,11 @@
 package com.ty.loanApp.entity;
 
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import lombok.Data;
 
 @Data
@@ -13,7 +13,7 @@ import lombok.Data;
 public class LoanEnquiryStepProcess {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int processId;
 	@Min(1)
 	@Max(5)

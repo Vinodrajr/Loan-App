@@ -52,4 +52,9 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 		throw new LoanEnquiryProcessIdNotFound("Loan Enquiry process ID Not Found");
 	}
 
+	@Override
+	public boolean loanEnnquiryStepIsCompleted(String accountNumber, int stepCount) {
+		return loanEnquiryStepProcessRepository.loanEnnquiryStepIsCompleted(accountNumber, stepCount);
+	}
+
 }
