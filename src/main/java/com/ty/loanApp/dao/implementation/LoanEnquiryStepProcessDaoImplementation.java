@@ -25,8 +25,7 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 		Optional<LoanEnquiryStepProcess> op = loanEnquiryStepProcessRepository.findById(processId);
 		if(op.isPresent())
 		{
-			LoanEnquiryStepProcess enquiryStepProcess = op.get();
-			loanEnquiryStepProcess.setProcessId(enquiryStepProcess.getProcessId());
+			loanEnquiryStepProcess.setProcessId(processId);
 			loanEnquiryStepProcessRepository.save(loanEnquiryStepProcess);
 		}
 		throw new LoanEnquiryProcessIdNotFound("Loan Enquiry process ID Not Found");
