@@ -2,11 +2,14 @@ package com.ty.loanApp.dao.implementation;
 
 import java.util.Optional;
 
+import org.springframework.stereotype.Repository;
+
 import com.ty.loanApp.dao.LoanEnquiryStepProcessDao;
 import com.ty.loanApp.entity.LoanEnquiryStepProcess;
 import com.ty.loanApp.exception.LoanEnquiryProcessIdNotFound;
 import com.ty.loanApp.repository.LoanEnquiryStepProcessRepository;
 
+@Repository
 public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepProcessDao {
 
 	private LoanEnquiryStepProcessRepository loanEnquiryStepProcessRepository;
@@ -21,10 +24,10 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 	}
 
 	@Override
-	public LoanEnquiryStepProcess updateEnquiryStepProcess(int processId, LoanEnquiryStepProcess loanEnquiryStepProcess) {
+	public LoanEnquiryStepProcess updateEnquiryStepProcess(int processId,
+			LoanEnquiryStepProcess loanEnquiryStepProcess) {
 		Optional<LoanEnquiryStepProcess> op = loanEnquiryStepProcessRepository.findById(processId);
-		if(op.isPresent())
-		{
+		if (op.isPresent()) {
 			loanEnquiryStepProcess.setProcessId(processId);
 			loanEnquiryStepProcessRepository.save(loanEnquiryStepProcess);
 		}
@@ -34,8 +37,7 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 	@Override
 	public String deleteEnquiryStepProcess(int processId) {
 		Optional<LoanEnquiryStepProcess> op = loanEnquiryStepProcessRepository.findById(processId);
-		if(op.isPresent())
-		{
+		if (op.isPresent()) {
 			loanEnquiryStepProcessRepository.delete(op.get());
 		}
 		throw new LoanEnquiryProcessIdNotFound("Loan Enquiry process ID Not Found");
@@ -44,8 +46,7 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 	@Override
 	public LoanEnquiryStepProcess getEnquiryStepProcess(int processId) {
 		Optional<LoanEnquiryStepProcess> op = loanEnquiryStepProcessRepository.findById(processId);
-		if(op.isPresent())
-		{
+		if (op.isPresent()) {
 			return op.get();
 		}
 		throw new LoanEnquiryProcessIdNotFound("Loan Enquiry process ID Not Found");

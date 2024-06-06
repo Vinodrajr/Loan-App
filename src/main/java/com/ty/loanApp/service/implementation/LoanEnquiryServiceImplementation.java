@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.netflix.discovery.converters.Auto;
 import com.ty.loanApp.dao.LoanEnquiryDao;
+import com.ty.loanApp.dao.LoanEnquiryStepProcessDao;
 import com.ty.loanApp.dto.EnquiryDto;
 import com.ty.loanApp.entity.LoanEnquiry;
+import com.ty.loanApp.entity.LoanEnquiryStepProcess;
 import com.ty.loanApp.enums.LoanStatus;
 import com.ty.loanApp.exception.AccountNumberNotFound;
 import com.ty.loanApp.proxy.AccountControllerProxy;
@@ -23,13 +26,26 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 	@Autowired
 	private AccountControllerProxy proxy;
 
+	@Autowired
+	private LoanEnquiryStepProcess loanEnquiryStepProcess;
+
+	@Autowired
+	private LoanEnquiryStepProcessDao loanEnquiryStepProcessDao;
+
 	@Override
 	public LoanEnquiry saveLoanEnquiry(EnquiryDto inputLoanEnquiry) {
 		ObjectMapper mapper = new ObjectMapper();
 		LoanEnquiry loanEnquiry = mapper.convertValue(inputLoanEnquiry, LoanEnquiry.class);
 		loanEnquiry.setLoanStatus(LoanStatus.IN_PROGRESS);
-		if (proxy.checkAccountNumberExist(loanEnquiry.getAccountnumber()).getBody().getData())
-			return loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
+		if (proxy.checkAccountNumberExist(loanEnquiry.getAccountnumber()).getBody().getData()) {
+			loanEnquiryStepProcess.setAccountNumber(loanEnquiry.getAccountnumber());
+			loanEnquiryStepProcess.setCompleted(true);
+			loanEnquiryStepProcess.setStepCount(1);
+			loanEnquiry = loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
+			loanEnquiryStepProcess.setLoanEnquiryid(loanEnquiry.getLoanEnquiryId());
+			loanEnquiryStepProcessDao.saveEnquiryStepProcess(loanEnquiryStepProcess);
+			return loanEnquiry;
+		}
 		throw new AccountNumberNotFound("Invalid Account Number");
 	}
 
@@ -72,5 +88,5 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 	public boolean checkLoanEnquiryByBranchId(String branchId) {
 		return loanEnquiryDao.checkLoanEnquiryByBranchId(branchId);
 	}
-	
+
 }

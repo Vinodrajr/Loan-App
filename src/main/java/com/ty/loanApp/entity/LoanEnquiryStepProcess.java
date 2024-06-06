@@ -20,5 +20,6 @@ public class LoanEnquiryStepProcess {
 	private int stepCount;
 	private boolean isCompleted;
 	private String accountNumber ;
+	private long loanEnquiryid;
 
 }

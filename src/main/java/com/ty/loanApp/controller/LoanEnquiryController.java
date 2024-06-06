@@ -28,7 +28,7 @@ public class LoanEnquiryController {
 		return loanEnquiryService.getLoanEnquiryByAccountNumber(accountnumber);
 	}
 
-	@MutationMapping(value = "deleteLoanEnquiryByEnquiryId")
+	@MutationMapping
 	public String deleteLoanEnquiryByEnquiryId(@Argument int loanEnquiryId) {
 		return loanEnquiryService.deleteLoanEnquiryByEnquiryId(loanEnquiryId);
 	}
