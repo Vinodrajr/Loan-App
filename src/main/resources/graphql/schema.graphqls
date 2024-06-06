@@ -58,6 +58,13 @@ enum LoanStatus {
 
 }
 
+type LoanEnquiryStepProcess {
+	processId : Int 
+	stepCount : Int
+	isCompleted : Boolean 
+	accountNumber : String
+}
+
 
 type Mutation{
 	createLoanEnquiry(inputLoanEnquiry:EnquiryDto):LoanEnquiry
@@ -67,3 +74,4 @@ type Mutation{
 type Query {
 	getLoanEnquiryByAccountNumber(accountnumber : String) : LoanEnquiry
 }
+
