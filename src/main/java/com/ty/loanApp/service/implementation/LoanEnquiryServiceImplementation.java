@@ -33,7 +33,7 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 	private LoanEnquiryStepProcessDao loanEnquiryStepProcessDao;
 
 	@Override
-	public LoanEnquiry saveLoanEnquiry(EnquiryDto inputLoanEnquiry) {
+	public LoanEnquiry LoanEnquiryStepOne(EnquiryDto inputLoanEnquiry) {
 		ObjectMapper mapper = new ObjectMapper();
 		LoanEnquiry loanEnquiry = mapper.convertValue(inputLoanEnquiry, LoanEnquiry.class);
 		loanEnquiry.setLoanStatus(LoanStatus.IN_PROGRESS);
