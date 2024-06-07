@@ -13,6 +13,7 @@ import com.ty.loanApp.entity.LoanEnquiry;
 import com.ty.loanApp.entity.LoanEnquiryStepProcess;
 import com.ty.loanApp.enums.LoanStatus;
 import com.ty.loanApp.exception.AccountNumberNotFound;
+import com.ty.loanApp.exception.LoanEnquiryStepAlreadyCompleted;
 import com.ty.loanApp.proxy.AccountControllerProxy;
 import com.ty.loanApp.service.LoanEnquiryService;
 
@@ -32,19 +33,24 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 	private LoanEnquiryStepProcessDao loanEnquiryStepProcessDao;
 
 	@Override
-	public LoanEnquiry LoanEnquiryStepOne(EnquiryDto inputLoanEnquiry) {
+	public LoanEnquiry loanEnquiryStepOne(EnquiryDto inputLoanEnquiry) {
 		ObjectMapper mapper = new ObjectMapper();
 		LoanEnquiry loanEnquiry = mapper.convertValue(inputLoanEnquiry, LoanEnquiry.class);
 		loanEnquiry.setLoanStatus(LoanStatus.IN_PROGRESS);
 		if (proxy.checkAccountNumberExist(loanEnquiry.getAccountnumber()).getBody().getData()) {
-			loanEnquiryStepProcess.setAccountNumber(loanEnquiry.getAccountnumber());
-			loanEnquiryStepProcess.setCompleted(true);
-			loanEnquiryStepProcess.setStepCount(1);
-			loanEnquiry = loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
-			loanEnquiryStepProcess.setLoanEnquiryid(loanEnquiry.getLoanEnquiryId());
-			loanEnquiryStepProcessDao.saveEnquiryStepProcess(loanEnquiryStepProcess);
-			return loanEnquiry;
-		}
+			
+				loanEnquiryStepProcess.setAccountNumber(loanEnquiry.getAccountnumber());
+				loanEnquiryStepProcess.setCompleted(true);
+				loanEnquiryStepProcess.setStepCount(1);
+				if((!loanEnquiryStepProcessDao.loanEnnquiryStepIsCompleted(loanEnquiryStepProcess.getAccountNumber(),1))) {
+					loanEnquiry = loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
+					loanEnquiryStepProcess.setLoanEnquiryid(loanEnquiry.getLoanEnquiryId());
+					loanEnquiryStepProcessDao.saveEnquiryStepProcess(loanEnquiryStepProcess);
+					return loanEnquiry;
+				}
+				throw new LoanEnquiryStepAlreadyCompleted("Step 1 is Completed for the given Account Number");
+			}
+		
 		throw new AccountNumberNotFound("Invalid Account Number");
 	}
 

@@ -13,4 +13,5 @@ extend type Mutation{
 	deleteLoanEnquiryByEnquiryId(loanEnquiryId : Int) : String
 	deleteLoanEnquiryByBankId(bankId : String) : String
 	deleteLoanEnquiryByBranchId(branchId : String ) : String
+	
 }

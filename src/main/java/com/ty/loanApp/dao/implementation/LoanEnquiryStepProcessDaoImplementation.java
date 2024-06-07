@@ -25,7 +25,7 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 
 	@Override
 	public LoanEnquiryStepProcess updateEnquiryStepProcess(int processId,
-			LoanEnquiryStepProcess loanEnquiryStepProcess) {
+		LoanEnquiryStepProcess loanEnquiryStepProcess) {
 		Optional<LoanEnquiryStepProcess> op = loanEnquiryStepProcessRepository.findById(processId);
 		if (op.isPresent()) {
 			loanEnquiryStepProcess.setProcessId(processId);
@@ -36,11 +36,8 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 
 	@Override
 	public String deleteEnquiryStepProcess(int processId) {
-		Optional<LoanEnquiryStepProcess> op = loanEnquiryStepProcessRepository.findById(processId);
-		if (op.isPresent()) {
-			loanEnquiryStepProcessRepository.delete(op.get());
-		}
-		throw new LoanEnquiryProcessIdNotFound("Loan Enquiry process ID Not Found");
+		loanEnquiryStepProcessRepository.delete(getEnquiryStepProcess(processId));
+		return "DELETED";
 	}
 
 	@Override
