@@ -6,18 +6,20 @@ import com.ty.loanApp.entity.LoanEnquiryStepProcess;
 
 public interface LoanEnquiryStepProcessDao {
 
-	public LoanEnquiryStepProcess saveEnquiryStepProcess(LoanEnquiryStepProcess loanEnquiryStepProcess);
-	
-	public LoanEnquiryStepProcess updateEnquiryStepProcess(int processId, LoanEnquiryStepProcess loanEnquiryStepProcess);
-	
-	public String deleteEnquiryStepProcess(int processId);
-	
-	public LoanEnquiryStepProcess getEnquiryStepProcess(int processId);
-	
-	public boolean loanEnnquiryStepIsCompleted( String accountNumber , int stepCount);
-	
+	LoanEnquiryStepProcess saveEnquiryStepProcess(LoanEnquiryStepProcess loanEnquiryStepProcess);
+
+	LoanEnquiryStepProcess updateEnquiryStepProcess(int processId, LoanEnquiryStepProcess loanEnquiryStepProcess);
+
+	String deleteEnquiryStepProcess(int processId);
+
+	LoanEnquiryStepProcess getEnquiryStepProcess(int processId);
+
+	boolean loanEnnquiryStepIsCompleted( String accountNumber , int stepCount);
+
 	long getLoanEquiryIdStepOne(String accountNumber);
 
-	
-	
+	long getLoanEquiryIdStepTwo(String accountNumber);
+
+
+
 }
