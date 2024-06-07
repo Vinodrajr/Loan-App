@@ -8,7 +8,7 @@ import com.ty.loanApp.entity.LoanEnquiry;
 public interface LoanEnquiryService {
 	
 	
-	public LoanEnquiry LoanEnquiryStepOne(EnquiryDto inputLoanEnquiry) ;
+	public LoanEnquiry loanEnquiryStepOne(EnquiryDto inputLoanEnquiry) ;
 	
 	public LoanEnquiry getLoanEnquiryByAccountNumber(String accountnumber);
 	
