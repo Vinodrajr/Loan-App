@@ -38,19 +38,20 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 		LoanEnquiry loanEnquiry = mapper.convertValue(inputLoanEnquiry, LoanEnquiry.class);
 		loanEnquiry.setLoanStatus(LoanStatus.IN_PROGRESS);
 		if (proxy.checkAccountNumberExist(loanEnquiry.getAccountnumber()).getBody().getData()) {
-			
-				loanEnquiryStepProcess.setAccountNumber(loanEnquiry.getAccountnumber());
-				loanEnquiryStepProcess.setCompleted(true);
-				loanEnquiryStepProcess.setStepCount(1);
-				if((!loanEnquiryStepProcessDao.loanEnnquiryStepIsCompleted(loanEnquiryStepProcess.getAccountNumber(),1))) {
-					loanEnquiry = loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
-					loanEnquiryStepProcess.setLoanEnquiryid(loanEnquiry.getLoanEnquiryId());
-					loanEnquiryStepProcessDao.saveEnquiryStepProcess(loanEnquiryStepProcess);
-					return loanEnquiry;
-				}
-				throw new LoanEnquiryStepAlreadyCompleted("Step 1 is Completed for the given Account Number");
+
+			loanEnquiryStepProcess.setAccountNumber(loanEnquiry.getAccountnumber());
+			loanEnquiryStepProcess.setCompleted(true);
+			loanEnquiryStepProcess.setStepCount(1);
+			if ((!loanEnquiryStepProcessDao.loanEnnquiryStepIsCompleted(loanEnquiryStepProcess.getAccountNumber(),
+					1))) {
+				loanEnquiry = loanEnquiryDao.saveLoanEnquiry(loanEnquiry);
+				loanEnquiryStepProcess.setLoanEnquiryid(loanEnquiry.getLoanEnquiryId());
+				loanEnquiryStepProcessDao.saveEnquiryStepProcess(loanEnquiryStepProcess);
+				return loanEnquiry;
 			}
-		
+			throw new LoanEnquiryStepAlreadyCompleted("Step 1 is Completed for the given Account Number");
+		}
+
 		throw new AccountNumberNotFound("Invalid Account Number");
 	}
 
@@ -94,5 +95,13 @@ public class LoanEnquiryServiceImplementation implements LoanEnquiryService {
 		return loanEnquiryDao.checkLoanEnquiryByBranchId(branchId);
 	}
 
+	@Override
+	public LoanEnquiry getLoanEnquiryStepOne(String accountNumber) {
+		long loanEquiryId = loanEnquiryStepProcessDao.getLoanEquiryIdStepOne(accountNumber);
+		if (loanEquiryId != 0)
+			return loanEnquiryDao.getLoanEnquiryByAccountNumber(accountNumber);
+		throw new AccountNumberNotFound("step 1 for accountNumber not found ");
+
+	}
 
 }
