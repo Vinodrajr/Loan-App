@@ -108,4 +108,12 @@ public class LoanEnquiryDaoImplementation implements LoanEnquiryDao {
 		return repository.checkLoanEnquiryByBranchId(branchId);
 	}
 
+	@Override
+	public LoanEnquiry getLoanEnquiry(Long enquiryId) {
+		Optional<LoanEnquiry> op = repository.findById(enquiryId);
+		if(op.isPresent())
+			return op.get();
+		throw new LoanEnquiryIdDoesNotExist("Enquiry ID doesnot Exist");
+	}
+
 }

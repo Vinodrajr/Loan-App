@@ -13,4 +13,11 @@ public interface LoanEnquiryStepProcessRepository extends JpaRepository<LoanEnqu
 	@Query("SELECT l.loanEnquiryid FROM LoanEnquiryStepProcess l WHERE l.accountNumber= :accountNumber AND l.stepCount=1")
 	Long getLoanEquiryIdStepOne(String accountNumber);
 
+	@Query("SELECT l.loanEnquiryid FROM LoanEnquiryStepProcess l WHERE l.accountNumber= :accountNumber AND l.stepCount=2")
+	Long getLoanEquiryIdStepTwo(String accountNumber);
+
+
+
+
+
 }

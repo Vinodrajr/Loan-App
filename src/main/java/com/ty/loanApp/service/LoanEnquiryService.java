@@ -7,24 +7,26 @@ import com.ty.loanApp.entity.LoanEnquiry;
 
 public interface LoanEnquiryService {
 
-	public LoanEnquiry loanEnquiryStepOne(EnquiryDto inputLoanEnquiry);
+	
 
-	public LoanEnquiry getLoanEnquiryByAccountNumber(String accountnumber);
+	LoanEnquiry getLoanEnquiryByAccountNumber(String accountnumber);
 
-	public String deleteLoanEnquiryByEnquiryId(long loanEnquiryId);
+	String deleteLoanEnquiryByEnquiryId(long loanEnquiryId);
 
-	public String deleteLoanEnquiryByBankId(String bankId);
+	String deleteLoanEnquiryByBankId(String bankId);
 
-	public String deleteLoanEnquiryByBranchId(String branchId);
+	String deleteLoanEnquiryByBranchId(String branchId);
 
-	public List<LoanEnquiry> findAllByBranchId(String branchId);
+	List<LoanEnquiry> findAllByBranchId(String branchId);
 
-	public List<LoanEnquiry> findAllByBankId(String bankId);
+	List<LoanEnquiry> findAllByBankId(String bankId);
 
-	public boolean checkLoanEnquiryByBankId(String bankId);
+	boolean checkLoanEnquiryByBankId(String bankId);
 
-	public boolean checkLoanEnquiryByBranchId(String branchId);
+	boolean checkLoanEnquiryByBranchId(String branchId);
 
 	LoanEnquiry getLoanEnquiryStepOne(String accountNumber);
+
+	LoanEnquiry getLoanEnquiryStepTwo(String accountNumber);
 
 }

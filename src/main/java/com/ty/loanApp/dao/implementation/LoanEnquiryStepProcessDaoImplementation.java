@@ -60,4 +60,9 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 		return loanEnquiryStepProcessRepository.getLoanEquiryIdStepOne(accountNumber);
 	}
 
+	@Override
+	public long getLoanEquiryIdStepTwo(String accountNumber) {
+		return loanEnquiryStepProcessRepository.getLoanEquiryIdStepTwo(accountNumber);
+	}
+
 }
