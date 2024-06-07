@@ -4,15 +4,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 
-import javax.security.auth.login.AccountNotFoundException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.ty.loanApp.dao.LoanEnquiryDao;
 import com.ty.loanApp.entity.LoanEnquiry;
 import com.ty.loanApp.exception.AccountNumberNotFound;
-import com.ty.loanApp.exception.BankIdDoesNotExist;
 import com.ty.loanApp.exception.BranchIdDoesNotExist;
 import com.ty.loanApp.exception.LoanEnquiryIdDoesNotExist;
 import com.ty.loanApp.repository.LoanEnquiryRepository;
@@ -110,4 +107,5 @@ public class LoanEnquiryDaoImplementation implements LoanEnquiryDao {
 	public boolean checkLoanEnquiryByBranchId(String branchId) {
 		return repository.checkLoanEnquiryByBranchId(branchId);
 	}
+
 }

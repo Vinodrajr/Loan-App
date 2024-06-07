@@ -7,6 +7,7 @@ import org.springframework.graphql.data.method.annotation.Argument;
 import org.springframework.graphql.data.method.annotation.MutationMapping;
 import org.springframework.graphql.data.method.annotation.QueryMapping;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ty.loanApp.dto.EnquiryDto;
 import com.ty.loanApp.entity.LoanEnquiry;
@@ -19,13 +20,18 @@ public class LoanEnquiryController {
 
 	@Autowired
 	private LoanEnquiryService loanEnquiryService;
-	
+
 	@Autowired
 	private LoanEnquiryStepProcessService loanEnquiryStepProcessService;
 
 	@MutationMapping(name = "loanEnquiryStepOne")
 	public LoanEnquiry loanEnquiryStepOne(@Argument EnquiryDto inputLoanEnquiry) {
 		return loanEnquiryService.loanEnquiryStepOne(inputLoanEnquiry);
+	}
+
+	@QueryMapping(name = "getLoanEnquiryStepOne")
+	public LoanEnquiry getLoanEnquiryStepOne(@Argument String accountNumber) {
+		return loanEnquiryService.getLoanEnquiryStepOne(accountNumber);
 	}
 
 	@QueryMapping
@@ -67,12 +73,10 @@ public class LoanEnquiryController {
 	public boolean checkLoanEnquiryByBranchId(@Argument String branchId) {
 		return loanEnquiryService.checkLoanEnquiryByBranchId(branchId);
 	}
-	
+
 	@QueryMapping
-	public boolean loanEnnquiryStepIsCompleted(@Argument String accountNumber ,@Argument int stepCount){
+	public boolean loanEnnquiryStepIsCompleted(@Argument String accountNumber, @Argument int stepCount) {
 		return loanEnquiryStepProcessService.loanEnnquiryStepIsCompleted(accountNumber, stepCount);
 	}
-	
-	
-	
+
 }

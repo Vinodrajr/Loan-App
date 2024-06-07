@@ -15,6 +15,8 @@ public interface LoanEnquiryStepProcessDao {
 	public LoanEnquiryStepProcess getEnquiryStepProcess(int processId);
 	
 	public boolean loanEnnquiryStepIsCompleted( String accountNumber , int stepCount);
+	
+	long getLoanEquiryIdStepOne(String accountNumber);
 
 	
 	

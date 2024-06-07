@@ -24,5 +24,7 @@ public interface LoanEnquiryDao {
 	
 	public boolean checkLoanEnquiryByBranchId(String branchId);
 	
+
+	
 	
 }

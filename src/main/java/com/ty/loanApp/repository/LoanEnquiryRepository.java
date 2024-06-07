@@ -7,8 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.ty.loanApp.entity.LoanEnquiry;
 
-import feign.Param;
-
 public interface LoanEnquiryRepository extends JpaRepository<LoanEnquiry, Long> {
 	
 	public LoanEnquiry findByAccountnumber(String accountnumber);

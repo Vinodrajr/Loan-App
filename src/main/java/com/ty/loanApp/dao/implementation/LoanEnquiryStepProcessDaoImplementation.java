@@ -55,4 +55,9 @@ public class LoanEnquiryStepProcessDaoImplementation implements LoanEnquiryStepP
 		return loanEnquiryStepProcessRepository.loanEnnquiryStepIsCompleted(accountNumber, stepCount);
 	}
 
+	@Override
+	public long getLoanEquiryIdStepOne(String accountNumber) {
+		return loanEnquiryStepProcessRepository.getLoanEquiryIdStepOne(accountNumber);
+	}
+
 }
