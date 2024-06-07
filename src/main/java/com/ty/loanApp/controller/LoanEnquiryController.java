@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 
 import com.ty.loanApp.dto.EnquiryDto;
 import com.ty.loanApp.entity.LoanEnquiry;
+import com.ty.loanApp.entity.LoanEnquiryStepProcess;
 import com.ty.loanApp.service.LoanEnquiryService;
 import com.ty.loanApp.service.LoanEnquiryStepProcessService;
 
@@ -24,7 +25,7 @@ public class LoanEnquiryController {
 
 	@MutationMapping(name = "loanEnquiryStepOne")
 	public LoanEnquiry loanEnquiryStepOne(@Argument EnquiryDto inputLoanEnquiry) {
-		return loanEnquiryService.LoanEnquiryStepOne(inputLoanEnquiry);
+		return loanEnquiryService.loanEnquiryStepOne(inputLoanEnquiry);
 	}
 
 	@QueryMapping
@@ -71,5 +72,7 @@ public class LoanEnquiryController {
 	public boolean loanEnnquiryStepIsCompleted(@Argument String accountNumber ,@Argument int stepCount){
 		return loanEnquiryStepProcessService.loanEnnquiryStepIsCompleted(accountNumber, stepCount);
 	}
+	
+	
 	
 }

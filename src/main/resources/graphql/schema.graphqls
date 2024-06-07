@@ -66,6 +66,8 @@ type LoanEnquiryStepProcess {
 }
 
 
+
+
 type Mutation{
 	loanEnquiryStepOne(inputLoanEnquiry:EnquiryDto):LoanEnquiry
 }
